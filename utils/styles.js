@@ -6,6 +6,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: white
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   topContainer: {
     flex: 2,
     justifyContent: 'center',

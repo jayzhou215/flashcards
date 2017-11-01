@@ -9,14 +9,7 @@ import { Constants } from 'expo'
 import reducer from './reducers/decks'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
-
-function AddDeck() {
-  return (
-    <View style={{flex: 1}}>
-      <Text>Add Deck</Text>
-    </View>
-  )
-}
+import AddDeck from './components/AddDeck'
 
 const Tabs = TabNavigator({
   Decks: {

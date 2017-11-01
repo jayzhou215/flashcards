@@ -7,8 +7,8 @@ import { styles } from '../utils/styles'
 class QuizView extends Component {
 
   state = {
-    curPage: 1,
-    isQuestion: true,
+    curPage: 0,
+    isQuestion: false,
     correctNumber: 0,
   }
 
