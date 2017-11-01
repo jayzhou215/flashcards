@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, TouchableHighlight, StyleSheet, Platform } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import DeckItem from './DeckItem'
 import { white, black } from '../utils/colors'
 
 class DeckView extends Component {
 
-  static navigationOptions = ({navigation}) => {
-    const title = navigation.state.params.deckId
-    return {
-      title,
-    }
+  goQuiz = () => {
+    this.props.navigation.navigate('Quiz', {deckId: this.props.title})
   }
 
   render () {
@@ -24,12 +21,13 @@ class DeckView extends Component {
           <TouchableOpacity>
             <Text style={styles.addCardBtn}>Add Card</Text>
           </TouchableOpacity>
-          <TouchableHighlight
+          <TouchableOpacity
             underlayColor={white}
             style={[styles.startQuizBtn, {marginTop: 5}]}
+            onPress={this.goQuiz}
             >
             <Text style={styles.startQuizText}>Start Quiz</Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     )

@@ -8,6 +8,7 @@ import { lightBlack, white, black } from './utils/colors'
 import { Constants } from 'expo'
 import reducer from './reducers/decks'
 import DeckView from './components/DeckView'
+import QuizView from './components/QuizView'
 
 function AddDeck() {
   return (
@@ -36,7 +37,7 @@ const Tabs = TabNavigator({
   },
   tabBarOptions: {
     activateTintColor: lightBlack,
-    height: 56,
+    height: 36,
     backgroundColor: white,
 
   }
@@ -48,11 +49,22 @@ const MainNavigator = StackNavigator({
   },
   Deck: {
     screen: DeckView,
+    navigationOptions: ({navigation}) => ({
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: black,
+      },
+      title: navigation.state.params.deckId
+    })
+  },
+  Quiz: {
+    screen: QuizView,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
         backgroundColor: black,
-      }
+      },
+      title: 'Quiz'
     }
   }
 })
