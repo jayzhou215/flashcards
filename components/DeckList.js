@@ -1,27 +1,30 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import { white, black, gray } from '../utils/colors'
+import DeckItem from './DeckItem'
 
 class DeckList extends Component {
 
-  renderItem = (item) => (
-    <View style={{padding: 10,}} >
-      <TouchableOpacity onPress={ () =>this.props.navigation.navigate('Deck', {
-          deckId: item.item.title
-        }) }>
-        <Text>{JSON.stringify(item)}</Text>
-      </TouchableOpacity>
-    </View>
+  renderItem = ({item}) => (
+    <DeckItem
+      title={item.title}
+      questionLength={item.questions.length}
+      onPress={ () => this.props.navigation.navigate('Deck', {deckId: item.title}) }/>
   )
 
   _keyExtractor = (item, index) => item.title
+
+  separator = () => (
+    <View style={ {height: 0.5, backgroundColor: black,} } />
+  )
 
   render() {
     const { deckList }  = this.props
     return (
       <View style={{flex: 1}}>
-        <Text>Decks</Text>
         <FlatList
+          ItemSeparatorComponent={this.separator}
           keyExtractor={this._keyExtractor}
           data={deckList}
           renderItem={this.renderItem}/>
@@ -29,6 +32,8 @@ class DeckList extends Component {
     )
   }
 }
+
+
 
 function mapStateToProps (decks) {
   const deckList = Object.keys(decks).map((key) => {

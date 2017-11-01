@@ -7,15 +7,7 @@ import { createStore } from 'redux'
 import { lightBlack, white } from './utils/colors'
 import { Constants } from 'expo'
 import reducer from './reducers/decks'
-
-function DeckView ({navigation}) {
-  return (
-    <View>
-      <Text>DeckView {navigation.state.params.deckId && JSON.stringify(navigation.state.params.deckId)}</Text>
-
-    </View>
-  )
-}
+import DeckView from './components/DeckView'
 
 function AddDeck() {
   return (
