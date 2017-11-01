@@ -1,22 +1,40 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, TouchableHighlight, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
-import { white, black } from '../utils/colors'
+import { white, black, green, red } from '../utils/colors'
+import { styles } from '../utils/styles'
 
 class QuizView extends Component {
 
   state = {
-    curPage: 0,
-
+    curPage: 1,
+    isQuestion: true,
+    correctNumber: 0,
   }
 
   render() {
     const { questions } = this.props
-    const { curPage } = this.state
+    const { curPage, isQuestion } = this.state
     const totalPage = questions.length
     return (
-      <View>
-        <Text>QuizView - {curPage} / {totalPage} - {  JSON.stringify(questions[curPage]) }</Text>
+      <View style={styles.container}>
+        <Text>{curPage} / {totalPage}</Text>
+        <View style={styles.topContainer}>
+          <Text style={styles.bigText}>{ isQuestion ? questions[curPage].question : questions[curPage].answer }</Text>
+          <Text style={styles.redText}>{ isQuestion ? 'Question' : 'Answer' }</Text>
+        </View>
+        <View style={styles.bottomContainer}>
+          <TouchableOpacity
+            underlayColor={green}
+            style={[styles.btn, { backgroundColor:green, borderColor:green }]}>
+            <Text style={styles.btnText}>Correct</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            underlayColor={red}
+            style={[styles.btn, { backgroundColor:red, borderColor:red, marginTop: 5 }]}>
+            <Text style={styles.btnText}>Incorrect</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
