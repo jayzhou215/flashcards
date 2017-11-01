@@ -4,14 +4,14 @@ import { StackNavigator, TabNavigator } from 'react-navigation'
 import DeckList from './components/DeckList'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { lightBlack, white } from './utils/colors'
+import { lightBlack, white, black } from './utils/colors'
 import { Constants } from 'expo'
 import reducer from './reducers/decks'
 import DeckView from './components/DeckView'
 
 function AddDeck() {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Text>Add Deck</Text>
     </View>
   )
@@ -48,6 +48,12 @@ const MainNavigator = StackNavigator({
   },
   Deck: {
     screen: DeckView,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: black,
+      }
+    }
   }
 })
 
