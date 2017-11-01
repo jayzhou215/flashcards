@@ -1,14 +1,42 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StackNavigator } from 'react-navigation'
+
+function DeckView () {
+  return (
+    <View>
+      <TouchableOpacity>
+          <Text>DeckView</Text>
+      </TouchableOpacity>
+
+    </View>
+  )
+}
+
+function DeckList ({navigation}) {
+  return (
+    <View>
+      <TouchableOpacity onPress={()=>navigation.navigate('Deck')}>
+          <Text>DeckList</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: DeckList,
+  },
+  Deck: {
+    screen: DeckView,
+  }
+})
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <MainNavigator />
     );
   }
 }
