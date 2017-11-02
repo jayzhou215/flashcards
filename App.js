@@ -11,6 +11,7 @@ import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import AddDeck from './components/AddDeck'
 import AddCard from './components/AddCard'
+import { setLocalNotification } from './utils/notifications'
 
 const Tabs = TabNavigator({
   Decks: {
@@ -84,6 +85,10 @@ function LightBlackStatusBar ({ backgroundColor, ...props }) {
 
 
 export default class App extends React.Component {
+
+  componentDidMount(){
+    setLocalNotification()
+  }
 
   render() {
     return (

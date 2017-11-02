@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, TouchableHighlight, StyleSheet, Platform,
 import { connect } from 'react-redux'
 import { white, black, green, red } from '../utils/colors'
 import { styles } from '../utils/styles'
+import { clearNotification, setLocalNotification } from '../utils/notifications'
 
 class QuizView extends Component {
 
@@ -80,6 +81,9 @@ class QuizView extends Component {
       ],
       { cancelable: false }
     )
+
+    clearNotification()
+      .then(setLocalNotification)
   }
 
   render() {
