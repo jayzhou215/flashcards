@@ -53,7 +53,6 @@ class AddCard extends Component {
     const { title, questions } = this.props
     return (
       <View style={[styles.container, styles.center, {paddingLeft: 24, paddingRight: 24}]}>
-        <Text>{title} - {questions?JSON.stringify(questions): "no questions yet"}</Text>
         <TextInput
           style={styles.input}
           onChangeText={this.onInputQuestion}
