@@ -75,8 +75,8 @@ class QuizView extends Component {
     Alert.alert(result,
       '',
       [
-        { text: 'restart quiz', onPress: restartQuiz },
-        { text: 'back', onPress: back }
+        { text: 'Restart Quiz', onPress: restartQuiz },
+        { text: 'Back to Deck', onPress: back }
       ],
       { cancelable: false }
     )

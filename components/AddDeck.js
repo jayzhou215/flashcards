@@ -39,7 +39,6 @@ class AddDeck extends Component {
   render() {
     return (
       <View style={[styles.container, styles.center, {paddingLeft: 24, paddingRight: 24}]}>
-        <Text>{JSON.stringify(this.props.decks)}</Text>
         <Text style={[styles.bigText, {fontSize: 48}]} >What is the title of your new deck?</Text>
         <TextInput
           style={[styles.input, {marginTop: 40, }]}
@@ -47,7 +46,7 @@ class AddDeck extends Component {
           ref={input => { this.textInput = input }}
           placeholder='Deck title'/>
         <TouchableOpacity style={styles.btn} onPress={this.submit}>
-          <Text style={styles.btnText}>Submit</Text>
+          <Text style={styles.btnText}>Create Deck</Text>
         </TouchableOpacity>
       </View>
     )
