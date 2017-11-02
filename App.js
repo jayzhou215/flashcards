@@ -10,6 +10,7 @@ import reducer from './reducers/decks'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import AddDeck from './components/AddDeck'
+import AddCard from './components/AddCard'
 
 const Tabs = TabNavigator({
   Decks: {
@@ -59,6 +60,17 @@ const MainNavigator = StackNavigator({
       },
       title: 'Quiz'
     }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: black,
+      },
+      title: 'Add Card'
+    }
+
   }
 })
 

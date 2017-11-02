@@ -10,6 +10,10 @@ class DeckView extends Component {
     this.props.navigation.navigate('Quiz', {deckId: this.props.title})
   }
 
+  addCard = () => {
+    this.props.navigation.navigate('AddCard', {deckId: this.props.title})
+  }
+
   render () {
     const { title, questions, } = this.props
     return (
@@ -18,7 +22,9 @@ class DeckView extends Component {
             <DeckItem title={title} questionLength={questions.length} fromDeckView={true} />
         </View>
         <View style={{flex:1, alignItems: 'center'}}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.addCard}
+            >
             <Text style={styles.addCardBtn}>Add Card</Text>
           </TouchableOpacity>
           <TouchableOpacity

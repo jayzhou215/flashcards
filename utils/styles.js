@@ -42,6 +42,17 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: red,
     textAlign: 'center',
+  },
+  input: {
+    height: 40,
+    marginLeft: 10,
+    marginRight: 10,
+    alignSelf: 'stretch',
+    borderRadius: Platform.OS === 'ios' ? 6 : 2,
+    borderWidth: 1,
+    borderColor: black,
+    marginBottom: 40,
+    paddingLeft: 4,
   }
 
 
