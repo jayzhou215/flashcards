@@ -32,7 +32,6 @@ const Tabs = TabNavigator({
   },
   tabBarOptions: {
     activateTintColor: lightBlack,
-    height: 36,
     backgroundColor: white,
 
   }
@@ -45,33 +44,27 @@ const MainNavigator = StackNavigator({
   Deck: {
     screen: DeckView,
     navigationOptions: ({navigation}) => ({
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: black,
-      },
       title: navigation.state.params.deckId
     })
   },
   Quiz: {
     screen: QuizView,
     navigationOptions: {
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: black,
-      },
       title: 'Quiz'
     }
   },
   AddCard: {
     screen: AddCard,
     navigationOptions: {
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: black,
-      },
       title: 'Add Card'
     }
-
+  }
+}, {
+  navigationOptions: {
+    headerTintColor: white,
+    headerStyle: {
+      backgroundColor: black,
+    },
   }
 })
 
@@ -82,7 +75,6 @@ function LightBlackStatusBar ({ backgroundColor, ...props }) {
     </View>
   )
 }
-
 
 export default class App extends React.Component {
 
@@ -101,12 +93,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
