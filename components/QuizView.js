@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, TouchableHighlight, StyleSheet, Platform, Alert } from 'react-native'
+import { Text, View, TouchableOpacity, TouchableHighlight, StyleSheet, Platform, Alert, Animated, Easing } from 'react-native'
 import { connect } from 'react-redux'
 import { white, black, green, red } from '../utils/colors'
 import { styles } from '../utils/styles'
@@ -11,6 +11,7 @@ class QuizView extends Component {
     curPage: 0,
     isInQuestionPage: true,
     correctNumber: 0,
+    rotateValue: new Animated.Value(0),
   }
 
   toggle = () => {
@@ -18,6 +19,9 @@ class QuizView extends Component {
       ...state,
       isInQuestionPage: !state.isInQuestionPage
     }))
+    const { rotateValue, isInQuestionPage } = this.state
+    const to = isInQuestionPage ? 1 : 0
+    Animated.timing(rotateValue, {duration: 1000, toValue: to, easing: Easing.linear }).start()
   }
 
   onCorrectPressed = () => {
@@ -88,19 +92,25 @@ class QuizView extends Component {
 
   render() {
     const { questions } = this.props
-    const { curPage, isInQuestionPage } = this.state
+    const { curPage, isInQuestionPage, rotateValue } = this.state
     const totalPage = questions.length
+    const deg = this.state.rotateValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg']
+    })
+
+
     return (
       <View style={styles.container}>
         <Text>{curPage + 1} / {totalPage}</Text>
 
         <View style={styles.topContainer}>
-          <Text style={styles.bigText}>
+          <Animated.Text style={[styles.bigText, {transform: [{rotateY: deg}]}]}>
             { isInQuestionPage ? questions[curPage].question : questions[curPage].answer }
-          </Text>
+          </Animated.Text>
           <TouchableOpacity onPress={this.toggle}>
             <Text style={styles.redText} >
-              { isInQuestionPage ? 'Question' : 'Answer' }
+              { isInQuestionPage ? 'Answer' : 'Question' }
             </Text>
           </TouchableOpacity>
         </View>
