@@ -7,7 +7,7 @@ import { white, black } from '../utils/colors'
 class DeckView extends Component {
 
   goQuiz = () => {
-    if (!this.props.questions) {
+    if (this.props.questionLength === 0) {
       Alert.alert('no questions yet...')
       return
     }
@@ -19,11 +19,11 @@ class DeckView extends Component {
   }
 
   render () {
-    const { title, questions, } = this.props
+    const { title, questionLength, } = this.props
     return (
       <View style={{flex:1, backgroundColor: white}}>
         <View style={{flex:2, justifyContent: 'center'}}>
-            <DeckItem title={title} questionLength={questions ? questions.length : 0} fromDeckView={true} />
+            <DeckItem title={title} questionLength={questionLength} fromDeckView={true} />
         </View>
         <View style={{flex:1, alignItems: 'center'}}>
           <TouchableOpacity
@@ -78,7 +78,7 @@ function mapStateToProps(state, {navigation}) {
   const deck = state[deckId]
   return {
     title: deck.title,
-    questions: deck.questions
+    questionLength: deck.questions.length
   }
 }
 

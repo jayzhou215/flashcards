@@ -5,6 +5,7 @@ import { white, black, gray } from '../utils/colors'
 import DeckItem from './DeckItem'
 import { receiveDecks } from '../actions/decks'
 import { getDecks } from '../utils/Storage'
+import { styles } from '../utils/styles'
 
 class DeckList extends Component {
 
@@ -27,8 +28,22 @@ class DeckList extends Component {
     <View style={ {height: 0.5, backgroundColor: black,} } />
   )
 
+  goAddDeck = () => {
+    this.props.navigation.navigate('AddDeck')
+  }
+
   render() {
     const { deckList }  = this.props
+    if (deckList.length === 0) {
+        return (
+          <View style={[styles.container, styles.center]}>
+            <Text>No deck yet...</Text>
+            <TouchableOpacity onPress={this.goAddDeck} style={styles.btn}>
+              <Text style={styles.btnText}>Add a new deck</Text>
+            </TouchableOpacity>
+          </View>
+        )
+    }
     return (
       <View style={{flex: 1}}>
         <FlatList

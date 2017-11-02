@@ -38,9 +38,7 @@ class AddCard extends Component {
     const { question, answer } = this.state
     const { title, questions } = this.props
     addCardToDeck(title, {question, answer})
-
     questions.push({question, answer})
-
     this.props.dispatch(addDeck({
       [title] : {
         title,

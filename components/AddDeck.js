@@ -21,7 +21,6 @@ class AddDeck extends Component {
       .then((success) => {
         if (success) {
           this.setState(() => ({title: null}))
-          Alert.alert('success')
           this.props.dispatch(addDeck({
             [title]: {title, questions: []}
           }
@@ -29,6 +28,7 @@ class AddDeck extends Component {
           if (this.textInput) {
             this.textInput.clear()
           }
+          this.props.navigation.navigate('Deck', {deckId: title})
         } else {
           Alert.alert('exist deck title: ' + title)
         }
