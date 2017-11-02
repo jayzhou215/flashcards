@@ -13,13 +13,17 @@ class AddDeck extends Component {
 
   submit = () => {
     const title = this.state.title
+    if (!title) {
+      Alert.alert('Input a title please!')
+      return
+    }
     saveDeckTitle(title)
       .then((success) => {
         if (success) {
           this.setState(() => ({title: null}))
           Alert.alert('success')
           this.props.dispatch(addDeck({
-            [title]: {title, }
+            [title]: {title, questions: []}
           }
           ))
           if (this.textInput) {

@@ -27,7 +27,7 @@ export function saveDeckTitle(title) {
       }
       const newData = {
         ...data,
-        [title] : {title,}
+        [title] : {title, questions: []}
       }
       console.log(newData)
       AsyncStorage.setItem(KEY_DECKS, JSON.stringify(newData))
@@ -38,18 +38,14 @@ export function saveDeckTitle(title) {
 
 // take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
 export function addCardToDeck(title, card) {
-  return AsyncStorage.getItem(DECKS_KEY)
+  return AsyncStorage.getItem(KEY_DECKS)
     .then(JSON.parse)
     .then((data) => {
-      if (!data[title]) {
-        console.log('Error! no such title: ', title)
-        return
-      }
-      const oldQuestions = data[title].questions
-      const newQuestions = oldQuestions ? oldQuestions.push(card) : [card]
+      const questions = data[title].questions
+      questions.push(card)
       const newData = {
         ...data,
-        [title] : {title, newQuestions}
+        [title] : {title, questions}
       }
       AsyncStorage.setItem(KEY_DECKS, JSON.stringify(newData))
     })

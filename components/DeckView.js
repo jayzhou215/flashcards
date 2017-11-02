@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet, Platform } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Platform, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import DeckItem from './DeckItem'
 import { white, black } from '../utils/colors'
@@ -7,6 +7,10 @@ import { white, black } from '../utils/colors'
 class DeckView extends Component {
 
   goQuiz = () => {
+    if (!this.props.questions) {
+      Alert.alert('no questions yet...')
+      return
+    }
     this.props.navigation.navigate('Quiz', {deckId: this.props.title})
   }
 
