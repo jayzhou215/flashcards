@@ -84,6 +84,7 @@ function LightBlackStatusBar ({ backgroundColor, ...props }) {
 
 
 export default class App extends React.Component {
+
   render() {
     return (
       <Provider store={createStore(reducer)}>

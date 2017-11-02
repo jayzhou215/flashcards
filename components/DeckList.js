@@ -3,13 +3,21 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native
 import { connect } from 'react-redux'
 import { white, black, gray } from '../utils/colors'
 import DeckItem from './DeckItem'
+import { receiveDecks } from '../actions/decks'
+import { getDecks } from '../utils/Storage'
 
 class DeckList extends Component {
+
+  componentDidMount() {
+    getDecks().then((decks) => {
+      this.props.dispatch(receiveDecks(decks))
+    })
+  }
 
   renderItem = ({item}) => (
     <DeckItem
       title={item.title}
-      questionLength={item.questions.length}
+      questionLength={item.questions ? item.questions.length : 0}
       onPress={ () => this.props.navigation.navigate('Deck', {deckId: item.title}) }/>
   )
 

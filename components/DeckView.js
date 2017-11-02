@@ -19,7 +19,7 @@ class DeckView extends Component {
     return (
       <View style={{flex:1, backgroundColor: white}}>
         <View style={{flex:2, justifyContent: 'center'}}>
-            <DeckItem title={title} questionLength={questions.length} fromDeckView={true} />
+            <DeckItem title={title} questionLength={questions ? questions.length : 0} fromDeckView={true} />
         </View>
         <View style={{flex:1, alignItems: 'center'}}>
           <TouchableOpacity
