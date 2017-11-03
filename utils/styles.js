@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native'
-import { white, black, red } from './colors'
+import { white, black, red, gray } from './colors'
 
 export const styles = StyleSheet.create({
   container: {
@@ -53,7 +53,18 @@ export const styles = StyleSheet.create({
     borderColor: black,
     marginBottom: 40,
     paddingLeft: 4,
-  }
+  },
+  header: {
+    fontSize: 20,
+    color: black,
+    textAlign: 'center',
+  },
+  subHeader: {
+    marginTop: 4,
+    fontSize: 14,
+    color: gray,
+    textAlign: 'center',
+  },
 
 
 })

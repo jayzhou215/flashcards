@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Platform, Alert } from 'react
 import { connect } from 'react-redux'
 import DeckItem from './DeckItem'
 import { white, black } from '../utils/colors'
+import { styles } from '../utils/styles'
 
 class DeckView extends Component {
 
@@ -28,50 +29,22 @@ class DeckView extends Component {
         <View style={{flex:1, alignItems: 'center'}}>
           <TouchableOpacity
             onPress={this.addCard}
+            style={[styles.btn, {backgroundColor: white, borderColor: black}]}
             >
-            <Text style={styles.addCardBtn}>Add Card</Text>
+            <Text style={[styles.btnText, {color: black}]}>Add Card</Text>
           </TouchableOpacity>
           <TouchableOpacity
             underlayColor={white}
-            style={[styles.startQuizBtn, {marginTop: 5}]}
+            style={[styles.btn, {marginTop: 5, backgroundColor: black, borderWidth: 0}]}
             onPress={this.goQuiz}
             >
-            <Text style={styles.startQuizText}>Start Quiz</Text>
+            <Text style={styles.btnText}>Start Quiz</Text>
           </TouchableOpacity>
         </View>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  addCardBtn: {
-    borderRadius: Platform.OS === 'ios' ? 6 : 2,
-    borderColor: black,
-    borderWidth: 1,
-    fontSize: 16,
-    color: black,
-    paddingTop: 16,
-    paddingBottom: 16,
-    width: 200,
-    textAlign: 'center',
-  },
-  startQuizBtn: {
-    borderRadius: Platform.OS === 'ios' ? 6 : 2,
-    borderWidth: 1,
-    borderColor: white,
-    backgroundColor: black,
-    paddingTop: 16,
-    paddingBottom: 16,
-    width: 200,
-
-  },
-  startQuizText: {
-    fontSize: 16,
-    color: white,
-    textAlign: 'center',
-  }
-})
 
 function mapStateToProps(state, {navigation}) {
   const deckId = navigation.state.params.deckId
