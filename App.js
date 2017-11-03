@@ -7,66 +7,8 @@ import { createStore } from 'redux'
 import { lightBlack, white, black } from './utils/colors'
 import { Constants } from 'expo'
 import reducer from './reducers/decks'
-import DeckView from './components/DeckView'
-import QuizView from './components/QuizView'
-import AddDeck from './components/AddDeck'
-import AddCard from './components/AddCard'
 import { setLocalNotification } from './utils/notifications'
-
-const Tabs = TabNavigator({
-  Decks: {
-    screen: DeckList,
-    navigationOptions: {
-      tabBarLabel: 'DECKS',
-    },
-  },
-  AddDeck: {
-    screen: AddDeck,
-    navigationOptions: {
-      tabBarLabel: 'ADD DECKS',
-    },
-  }
-}, {
-  navigationOptions: {
-    header: null,
-  },
-  tabBarOptions: {
-    activateTintColor: lightBlack,
-    backgroundColor: white,
-
-  }
-})
-
-const MainNavigator = StackNavigator({
-  Home: {
-    screen: Tabs,
-  },
-  Deck: {
-    screen: DeckView,
-    navigationOptions: ({navigation}) => ({
-      title: navigation.state.params.deckId
-    })
-  },
-  Quiz: {
-    screen: QuizView,
-    navigationOptions: {
-      title: 'Quiz'
-    }
-  },
-  AddCard: {
-    screen: AddCard,
-    navigationOptions: {
-      title: 'Add Card'
-    }
-  }
-}, {
-  navigationOptions: {
-    headerTintColor: white,
-    headerStyle: {
-      backgroundColor: black,
-    },
-  }
-})
+import { MainNavigator } from './components/MainNavigator'
 
 function LightBlackStatusBar ({ backgroundColor, ...props }) {
   return (
