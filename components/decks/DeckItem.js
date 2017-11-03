@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
-import { white, black, gray } from '../utils/colors'
-import { styles } from '../utils/styles'
+import { white, black, gray } from '../../utils/colors'
+import { styles } from '../../utils/styles'
 
 function DeckItem ({onPress, title, questionLength, fromDeckView}) {
   return (

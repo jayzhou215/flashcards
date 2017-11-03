@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import DeckList from './components/DeckList'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { lightBlack, white, black } from './utils/colors'

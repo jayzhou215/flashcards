@@ -1,4 +1,4 @@
-import DeckList from './DeckList'
+import DeckList from './decks/DeckList'
 import AddDeck from './AddDeck'
 import { TabNavigator } from 'react-navigation'
 import { white, lightBlack } from '../utils/colors'

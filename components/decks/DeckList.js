@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import { white, black, gray } from '../utils/colors'
+import { white, black, gray } from '../../utils/colors'
 import DeckItem from './DeckItem'
-import { receiveDecks } from './decks/actions'
-import { getDecks } from '../utils/Storage'
-import { styles } from '../utils/styles'
+import { receiveDecks } from './actions'
+import { getDecks } from '../../utils/Storage'
+import { styles } from '../../utils/styles'
 
 class DeckList extends Component {
 

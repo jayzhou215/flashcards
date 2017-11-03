@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation'
 import { Tabs } from './Tabs'
-import DeckView from './DeckView'
+import DeckView from './decks/DeckView'
 import QuizView from './QuizView'
 import AddCard from './AddCard'
 import { white, black } from '../utils/colors'

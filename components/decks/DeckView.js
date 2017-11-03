@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet, Platform, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import DeckItem from './DeckItem'
-import { white, black } from '../utils/colors'
-import { styles } from '../utils/styles'
+import { white, black } from '../../utils/colors'
+import { styles } from '../../utils/styles'
 
 class DeckView extends Component {
 
