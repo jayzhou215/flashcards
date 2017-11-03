@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions/types'
+import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from './types'
 
 function decks ( state = {
   React: {

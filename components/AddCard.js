@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { styles } from '../utils/styles'
 import { connect } from 'react-redux'
 import { addCardToDeck } from '../utils/Storage'
-import { addCard } from '../actions/decks'
+import { addCard } from './decks/actions'
 
 class AddCard extends Component {
 

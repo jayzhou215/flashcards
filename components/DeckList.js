@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native
 import { connect } from 'react-redux'
 import { white, black, gray } from '../utils/colors'
 import DeckItem from './DeckItem'
-import { receiveDecks } from '../actions/decks'
+import { receiveDecks } from './decks/actions'
 import { getDecks } from '../utils/Storage'
 import { styles } from '../utils/styles'
 

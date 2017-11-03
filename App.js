@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { lightBlack, white, black } from './utils/colors'
 import { Constants } from 'expo'
-import reducer from './reducers/decks'
+import reducer from './components/decks/reducer'
 import { setLocalNotification } from './utils/notifications'
 import { MainNavigator } from './components/MainNavigator'
 

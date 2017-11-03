@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { styles } from '../utils/styles'
 import { getDeck, saveDeckTitle } from '../utils/Storage'
 import { connect } from 'react-redux'
-import { addDeck } from '../actions/decks'
+import { addDeck } from './decks/actions'
 
 class AddDeck extends Component {
 
