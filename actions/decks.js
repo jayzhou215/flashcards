@@ -1,5 +1,4 @@
-export const RECEIVE_DECKS = 'receive_decks'
-export const ADD_DECK = 'add_deck'
+import { RECEIVE_DECKS, ADD_DECK } from './types'
 
 export function receiveDecks (decks) {
   return {
