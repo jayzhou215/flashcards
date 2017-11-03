@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK } from './types'
+import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from './types'
 
 export function receiveDecks (decks) {
   return {
@@ -11,5 +11,13 @@ export function addDeck (deck) {
   return {
     type : ADD_DECK,
     deck,
+  }
+}
+
+export function addCard ( title, card) {
+  return {
+    type: ADD_CARD,
+    title,
+    card,
   }
 }

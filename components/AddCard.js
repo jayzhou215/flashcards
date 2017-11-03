@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { styles } from '../utils/styles'
 import { connect } from 'react-redux'
 import { addCardToDeck } from '../utils/Storage'
-import { addDeck } from '../actions/decks'
+import { addCard } from '../actions/decks'
 
 class AddCard extends Component {
 
@@ -36,21 +36,15 @@ class AddCard extends Component {
       return
     }
     const { question, answer } = this.state
-    const { title, questions } = this.props
-    addCardToDeck(title, {question, answer})
-    questions.push({question, answer})
-    this.props.dispatch(addDeck({
-      [title] : {
-        title,
-        questions,
-      }
-    }))
+    const { title } = this.props
+    const card = { question, answer }
+    addCardToDeck(title, card)
+    this.props.dispatch(addCard(title, card))
     this.props.navigation.goBack()
   }
 
 
   render() {
-    const { title, questions } = this.props
     return (
       <View style={[styles.container, styles.center, {paddingLeft: 24, paddingRight: 24}]}>
         <TextInput
@@ -75,10 +69,9 @@ class AddCard extends Component {
 
 function mapStateToProps (decks, { navigation }) {
   const { deckId } = navigation.state.params
-  const { title, questions } = decks[deckId]
+  const { title } = decks[deckId]
   return {
     title,
-    questions,
     navigation,
   }
 }
