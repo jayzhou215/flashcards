@@ -39,8 +39,8 @@ class AddCard extends Component {
     const { title } = this.props
     const card = { question, answer }
     addCardToDeck(title, card)
-    this.props.dispatch(addCard(title, card))
-    this.props.navigation.goBack()
+    this.props.addCard(title, card)
+    this.props.goBack()
   }
 
 
@@ -76,4 +76,11 @@ function mapStateToProps (decks, { navigation }) {
   }
 }
 
-export default connect(mapStateToProps)(AddCard)
+function mapDispatchToProps (dispatch, { navigation }) {
+  return {
+    goBack: () => navigation.goBack(),
+    addCard: (title, card) => dispatch(addCard(title, card)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCard)
